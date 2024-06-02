@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmation Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .confirmation {
+            text-align: center;
+        }
+        .confirmation h1 {
+            color: #333;
+        }
+        .confirmation p {
+            color: #666;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation">
+        <h1 id="confirmationMessage">An email confirmation was sent to </h1>
+        <p>Have a great day!</p>
+    </div>
+
+    <script>
+        var user = JSON.parse(localStorage.getItem('selectedUser'));  // Retrieve the user object from localStorage
+        document.getElementById('confirmationMessage').textContent += user.email;
+        setTimeout(function() {
+            window.location.href = "index.html";
+        }, 3500);  // 2500 milliseconds = 2.5 seconds
+    </script>
+    
+
+</body>
+</html>

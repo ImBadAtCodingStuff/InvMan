@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Inventory</title>
+    <style>
+
+    button {
+        width: 200px;  /* adjust width as needed */
+        height: 50px;  /* adjust height as needed */
+        margin: 0 10px;
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 20px;
+        color: rgb(255, 255, 255);  /* makes the text color white */
+        background-color: rgb(111, 188, 232);  /* makes the button blue */
+        border: none;
+        border-radius: 12px;  /* rounds the corners of the button */
+        text-align: center;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+    
+    button:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+    button.selected {
+    background-color: rgb(88, 146, 179);  /* makes the selected button darker */
+    box-shadow: 0 22px 26px 0 rgba(0,0,0,0.24), 0 27px 60px 0 rgba(0,0,0,0.19);
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    #barcodeInput {
+    caret-color: transparent;
+    }
+
+
+
+}
+
+
+    </style>
+</head>
+<body onload="document.getElementById('barcodeInput').focus();">
+    <h1 id="myHeader"></h1>
+    <button id="retrieveButton" type="button" onclick="modifyInventory('Retrieve')">Retrieve</button>
+    <button id="RefurbishButton" type="button" onclick="modifyInventory('Refurbish')">Refurbish</button>
+    <br><br>
+
+    <input type="text" id="barcodeInput" onkeydown="addMacAddress()" style="background-color: transparent; border: none; outline: none; -webkit-appearance: none; -moz-appearance: textfield;">
+
+    <div id="macAddresses">
+        <!-- put the mac addresses here -->
+    </div>
+
+    <div id="confirmDialog" style="display: none; position: fixed; width: 300px; height: 200px; background: rgb(230, 230, 230); border: 1px solid black; z-index: 1000; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 15px; padding: 20px; box-sizing: border-box;">
+        <p id="confirmMessage" style="font-size: 1.2em; font-weight: bold;">Are you sure you want to add items to your inventory?</p>
+        <div style="display: flex; justify-content: space-between;">
+            <button id="yesButton" style="border-radius: 5px; background-color: rgb(59, 166, 59);">Yes</button>
+            <button id="noButton" style="border-radius: 5px; background-color: rgb(219, 74, 74);">No</button>
+        </div>
+    </div>
+    
+    
+    
+
+    <br><br>
+    <button type="button" onclick="goBack()">Back</button>
+    <button id="confirmButton" type="button" onclick="sendData()" style="display: none; background-color: rgb(58, 177, 58);">Confirm</button>
+
+    <script src="InvMan.js"></script>
+    <script>
+        window.onkeydown = function() {
+            document.getElementById('barcodeInput').focus();
+        };
+    </script>
+</body>
+</html>

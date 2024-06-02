@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory Managment</title>
+    <style>
+    /* ...existing styles... */
+    button {
+        width: 200px;
+        height: 50px;
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 20px;
+        color: rgb(255, 255, 255);
+        background-color: rgb(111, 188, 232);
+        border: none;
+        border-radius: 12px;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+    
+    button:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+    .fullscreen-btn {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        width: 100px;
+        height: 45px;
+        font-size: 12px;
+    }
+
+    /* Add styles for the grid container */
+    #userButtons {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+        justify-items: center;
+        align-items: center;
+        position: absolute;
+        top: 30%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 80%;
+    }
+
+    /* Style for the 'Other' button */
+    #otherButton {
+        position: absolute;
+        top: 70%;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    </style>
+</head>
+<body>
+    <h1 id="myHeader"></h1>
+    <div id="userButtons"></div>
+    <button id="otherButton" type="button">Other</button>
+
+    <script>console.log("can we even see logs")</script>
+    <script src="script.js"></script>
+</body>
+</html>

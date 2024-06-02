@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmation Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .confirmation {
+            text-align: center;
+        }
+        .confirmation h1 {
+            color: #333;
+        }
+        .confirmation p {
+            color: #666;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation">
+        <h1 id="confirmationMessage">An email confirmation was sent to </h1>
+        <p>Have a great day!</p>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    console.log("Are we even getting here?")
+    var user = JSON.parse(localStorage.getItem('selectedUser'));  // Retrieve the user object from localStorage
+    document.getElementById('confirmationMessage').textContent += user.email;
+
+    var macAddressList = JSON.parse(localStorage.getItem('macAddressList'));
+
+    console.log("this is a log that should contain macs (we are ing confrimpage):"+macAddressList)
+
+    $.ajax({
+        url: 'send_email.php',  // Your PHP script's URL
+        type: 'POST',
+        data: {
+            email: user.email,
+            macList: macAddressList
+        },
+        success: function(response) {
+            console.log(response);
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+
+    /*
+    macAddressList.forEach(function(macAddress) {
+    console.log(macAddress);  // Log each MAC address to the console
+    });
+    */
+
+    setTimeout(function() {
+            window.location.href = "index.html";
+    }, 3500);  // 3500 milliseconds = 3.5 seconds
+</script>
+
+    
+
+</body>
+</html>
