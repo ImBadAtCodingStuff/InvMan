@@ -42,9 +42,10 @@
     console.log("this is a log that should contain macs (we are ing confrimpage):"+macAddressList)
 
     $.ajax({
-        url: 'send_email.php',  // Your PHP script's URL
+        url: 'send_email.php',  // my PHP script's link
         type: 'POST',
         data: {
+            name: user.username,
             email: user.email,
             macList: macAddressList
         },

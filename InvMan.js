@@ -1,4 +1,5 @@
 console.log("Script is running");
+console.log("okay so i know for a gosh darn fact this is running");
 
 var macAddressList = [];  // Declare an array to store the MAC addresses
 var timer = null;  // Declare a timer variable outside the function
@@ -6,7 +7,7 @@ var timer = null;  // Declare a timer variable outside the function
 
 function addMacAddress(event) {
 
-
+    //console.log("is this really even getting run omg")
     var input = document.getElementById('barcodeInput');
 
     // Clear the previous timer if it exists
@@ -29,14 +30,19 @@ function addMacAddress(event) {
     }, 150);  // 150 milliseconds = 0.15 seconds
 }
 
+
 function displayMacAddresses() {
+    //console.log("MAC: ")
+
     var macAddresses = document.getElementById('macAddresses');
+
 
     // Clear the current contents of the macAddresses div
     macAddresses.innerHTML = '';
 
     // Iterate over the macAddressList
     for (var i = 0; i < macAddressList.length; i++) {
+        console.log("MAC: "+macAddressList[i])
         // Create a new span element to contain the text
         var span = document.createElement('span');
 
@@ -44,6 +50,20 @@ function displayMacAddresses() {
         span.style.color = 'black';
         span.style.fontSize = '20px';
         span.style.fontFamily = 'Arial, sans-serif';
+
+        if (macAddressList[i].startsWith("OBC9")) {
+            macAddressList[i] = "U4: "+macAddressList[i]
+        }
+        if (macAddressList[i].startsWith("1421")) {
+            macAddressList[i] = "U6: "+macAddressList[i]
+        }
+        if (macAddressList[i].startsWith("78C5")) {
+            macAddressList[i] = "ZYXEL: "+macAddressList[i]
+        }
+        if (macAddressList[i].startsWith('02HU')) {
+            console.log("TEST MAC: "+macAddressList[i])
+            macAddressList[i] = "TEST MAC: "+macAddressList[i]
+        }
 
         // Add the MAC address to the span
         span.textContent = macAddressList[i];
